@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="build/build.js"></script>
+  <script>
+    var threeCommasAPI = require('3commas-api-node');
+    const api = new threeCommasAPI({
+      apiKey: '1',
+      apiSecret: '1'
+    })
+
+    // get last 20 active deals
+    const ping = async () => {
+      let data = await api.ping();
+      console.log(data)
+    }
+
+    ping()
+  </script>
+</head>
+<body>
+
+</body>
+</html>

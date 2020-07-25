@@ -1,7 +1,7 @@
 'use strict'
 const querystring = require('querystring');
 const crypto = require('crypto')
-const fetch = require('node-fetch')
+const fetch = require('cross-fetch')
 
 const API_URL = 'https://api.3commas.io'
 
@@ -225,6 +225,9 @@ class threeCommasAPI {
     return await this.makeRequest('POST', `/public/api/ver1/accounts/${account_id}/remove?`, { account_id })
   }
 
+  async ping() {
+    return await this.makeRequest('GET', '/public/api/ver1/ping', null)
+  }
 }
 
 module.exports = threeCommasAPI

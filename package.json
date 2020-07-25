@@ -32,7 +32,9 @@
   "author": "Rento",
   "license": "gpl-3.0",
   "dependencies": {
-    "cross-fetch": "^3.0.5"
+    "cross-fetch": "^3.0.5",
+    "node-forge": "^0.9.1",
+    "query-string": "^6.13.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",

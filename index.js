@@ -1,7 +1,7 @@
 'use strict'
-const querystring = require('querystring');
-const crypto = require('crypto')
-const fetch = require('cross-fetch')
+const querystring = require('query-string');
+const forge = require('node-forge');
+const fetch = require('cross-fetch');
 
 const API_URL = 'https://api.3commas.io'
 
@@ -14,7 +14,10 @@ class threeCommasAPI {
 
   generateSignature (requestUri, reqData) {
     const request = requestUri + reqData
-    return crypto.createHmac('sha256', this._apiSecret).update(request).digest('hex')
+    const hmac = forge.hmac.create();
+    hmac.start('sha256', this._apiSecret);
+    hmac.update(request);
+    return hmac.digest().toHex();
   }
 
   async makeRequest (method, path, params) {
